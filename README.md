@@ -19,11 +19,11 @@ while(true):
     #check if the required packed scene is ready
     if(PackedSceneLoader.getLoadingState(SCENE1_PATH) == PackedSceneLoader.LoadingState.LOADED):
       
-      # note that: instance() and add_child() may lock the thread for a bit...
-      var instance = PackedSceneLoader.getPackedScene(SCENE1_PATH).instance()
-      if(instance == null):
-        send_error()
-      else:
-        $parentNode.call_deferred("add_child", instance)
-        PackedSceneLoader.unloadPackedScene(SCENE1_PATH) # unload packed scenes if not needed for caching
+        # note that: instance() and add_child() may lock the thread for a bit...
+        var instance = PackedSceneLoader.getPackedScene(SCENE1_PATH).instance()
+        if(instance == null):
+            send_error()
+        else:
+            $parentNode.call_deferred("add_child", instance)
+            PackedSceneLoader.unloadPackedScene(SCENE1_PATH) # unload packed scenes if not needed for caching
 ```
